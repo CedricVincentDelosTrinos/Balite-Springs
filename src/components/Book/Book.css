@@ -1022,8 +1022,53 @@
       padding: 8px 10px;
       font-size: 10px;
     }
+    
 }
+@media (max-width: 700px) {
+    /* Hide the cover tree and its background decoration */
+    .covertree,
+    .book-background .cover-background {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
 
+    /* Put Feedback and Admin at the top center */
+    .book-utility-navigation {
+        position: fixed !important;
+        top: 10px !important;
+        bottom: auto !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+
+        width: max-content !important;
+        max-width: 95% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+
+        padding: 6px !important;
+        z-index: 9999 !important;
+    }
+
+    .book-utility-button {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+
+        padding: 8px 12px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+
+        color: #f5f1e7 !important;
+        background: #294b35 !important;
+        border: 1px solid rgba(245, 241, 231, 0.5) !important;
+        border-radius: 20px !important;
+    }
+}
 
 /* =========================== CMS Dynamic Page Layout =========================== */
 
