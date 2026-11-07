@@ -284,7 +284,7 @@ export default function Book() {
 
                 {/* Previous page button */}
                 <button
-                    className="book-arrow"
+                    className="book-arrow book-arrow-prev"
                     onClick={previousPage}
                     disabled={currentPage === 0}
                     aria-label="Previous page"
@@ -364,7 +364,7 @@ export default function Book() {
 
                 {/* Next page button */}
                 <button
-                    className="book-arrow"
+                    className="book-arrow book-arrow-next"
                     onClick={nextPage}
                     disabled={currentPage >= visitPageIndex}
                     aria-label="Next page"
