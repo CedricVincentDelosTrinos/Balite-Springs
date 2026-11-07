@@ -1,0 +1,22 @@
+
+:root {
+  /* Colors */
+  --color-forest: #344b38;
+  --color-sage: #829477;
+  --color-tan: #d6c3a1;
+  --color-cream: #f5f1e7;
+  --color-surface: #fffdf7;
+
+  --color-text: #343b30;
+  --color-text-muted: #77796d;
+  --color-text-muted-cream: #a7a682;
+
+  /* Typography */
+  --font-heading: Georgia, serif;
+  --font-body: Arial, sans-serif;
+
+  /* Borders */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}

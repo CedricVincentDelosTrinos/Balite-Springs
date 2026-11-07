@@ -1,0 +1,32 @@
+
+@import "./tokens.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      #f5f1e7 0%,
+      #e8dfca 65%,
+      #d6c3a1 100%
+    );
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+button {
+  font: inherit;
+}

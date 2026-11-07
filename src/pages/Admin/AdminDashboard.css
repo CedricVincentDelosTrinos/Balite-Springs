@@ -1,0 +1,176 @@
+
+.admin-dashboard {
+    min-height: 100vh;
+    padding: 48px;
+    background: #f5f1e7;
+    color: #344b38;
+}
+
+.admin-header,
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.admin-header {
+    padding-bottom: 32px;
+    border-bottom: 1px solid #d6c3a1;
+}
+
+.admin-eyebrow {
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.admin-header h1 {
+    margin: 8px 0;
+}
+
+.admin-account,
+.destination-card-actions,
+.admin-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-dashboard button {
+    padding: 10px 16px;
+    border: 1px solid #829477;
+    border-radius: 6px;
+    background: #344b38;
+    color: white;
+    cursor: pointer;
+}
+
+.admin-dashboard button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.destination-management {
+    margin-top: 36px;
+}
+
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    margin-bottom: 6px;
+}
+
+.destination-list {
+    display: grid;
+    gap: 16px;
+}
+
+.destination-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    border: 1px solid #e0d6c4;
+    border-radius: 10px;
+    background: #fffdf7;
+}
+
+.destination-card h3 {
+    margin: 0 0 8px;
+}
+
+.destination-card p {
+    margin: 0 0 6px;
+}
+
+.destination-card-info span {
+    font-size: 13px;
+    color: #829477;
+}
+
+.admin-dashboard .delete-button {
+    background: transparent;
+    color: #a33b32;
+    border-color: #d9aaa5;
+}
+
+.empty-state {
+    padding: 48px 24px;
+    text-align: center;
+    border: 1px dashed #b9ad98;
+    border-radius: 10px;
+    background: #fffdf7;
+}
+
+.admin-error {
+    color: #a33b32;
+}
+
+.admin-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgb(0 0 0 / 45%);
+}
+
+.admin-modal {
+    width: min(100%, 520px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px;
+    border-radius: 12px;
+    background: #fffdf7;
+}
+
+.admin-modal h2 {
+    margin-top: 0;
+}
+
+.admin-modal form {
+    display: grid;
+    gap: 10px;
+}
+
+.admin-modal input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid #cfc5b3;
+    border-radius: 6px;
+    background: white;
+    font: inherit;
+}
+
+.admin-form-actions {
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.admin-dashboard .admin-form-actions button:first-child {
+    background: transparent;
+    color: #344b38;
+}
+
+@media (max-width: 700px) {
+    .admin-dashboard {
+        padding: 24px 16px;
+    }
+
+    .admin-header,
+    .section-heading,
+    .destination-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .admin-account {
+        flex-wrap: wrap;
+    }
+}
