@@ -1249,3 +1249,10 @@
   background: var(--surface-hover);
   transform: translateY(-2px);
 }
+
+@media (max-width: 700px) {
+    .book-arrow-prev {
+        z-index: 99999 !important;
+        pointer-events: auto !important;
+    }
+}

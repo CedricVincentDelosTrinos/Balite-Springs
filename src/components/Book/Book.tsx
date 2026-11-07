@@ -289,7 +289,10 @@ export default function Book() {
                 {/* Previous page button */}
                 <button
                     className="book-arrow book-arrow-prev"
-                    onClick={previousPage}
+                    onClick={() => {
+                        alert("Previous button tapped!");
+                        previousPage();
+                    }}
                     disabled={currentPage === 0}
                     aria-label="Previous page"
                 >
