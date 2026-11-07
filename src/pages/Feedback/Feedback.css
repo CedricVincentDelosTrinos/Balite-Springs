@@ -349,3 +349,88 @@
         height: 90px;
     }
 }
+
+@media (max-width: 600px) {
+    /* Allow the entire feedback page to scroll vertically */
+    .feedback-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        width: 100%;
+        min-height: 100dvh;
+        height: auto;
+        padding: 16px 12px 40px;
+
+        overflow: visible;
+    }
+
+    /* Feedback submission section */
+    .feedback-container {
+        width: 100%;
+        max-width: 600px;
+        flex: 0 0 auto;
+        padding: 22px 16px;
+        margin: 0 auto;
+    }
+
+    .feedback-back-button {
+        margin-right: 0;
+        margin-bottom: 20px;
+        align-self: flex-start;
+    }
+
+    /* Visitor feedback feed */
+    .approved-feedback-section {
+        width: 100%;
+        max-width: 600px;
+        flex: 0 0 auto;
+        margin: 28px auto 0;
+    }
+
+    .approved-feedback-header {
+        text-align: left;
+        margin-bottom: 18px;
+    }
+
+    /* Individual visitor posts */
+    .approved-feedback-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .approved-feedback-card {
+        width: 100%;
+        padding: 16px;
+        border-radius: var(--radius-md);
+    }
+
+    .approved-feedback-card-header {
+        align-items: flex-start;
+    }
+
+    .approved-feedback-message {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Visitor photos */
+    .approved-feedback-images {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .approved-feedback-images img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+
+    .feedback-load-more {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
