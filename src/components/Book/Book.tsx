@@ -204,17 +204,6 @@ export default function Book() {
     }, [cmsContent]);
 
 
-    useEffect(() => {
-        if (cmsContent !== null) {
-            console.log("CMS Destinations:", cmsContent.destinations);
-            console.log("CMS Pages:", cmsContent.pages);
-            const imagePage = cmsContent.pages.find(
-                (page) => page.slug === "balite-image"
-            );
-
-            console.log("Image page content:", imagePage?.content);
-        }
-    }, [cmsContent]);
 
     const previousPage = () => {
         const book = bookRef.current?.pageFlip();
@@ -240,18 +229,7 @@ export default function Book() {
     const needsSpacer = cmsContent.pages.length % 2 !== 0;
 
     const visitPageIndex =
-        cmsContent.pages.length + 1 + (needsSpacer ? 1 : 0);
-    console.log("Published CMS page count:", cmsContent.pages.length);
-    console.log("Needs spacer:", needsSpacer);
-    console.log("Visit page index:", visitPageIndex);
-    console.table(
-        cmsContent.pages.map((page, index) => ({
-            index: index + 1,
-            title: page.title,
-            slug: page.slug,
-            type: page.page_type,
-        }))
-    );
+    cmsContent.pages.length + 1 + (needsSpacer ? 1 : 0);
 
     return (
         
@@ -293,10 +271,7 @@ export default function Book() {
                 {/* Previous page button */}
                 <button
                     className="book-arrow book-arrow-prev"
-                    onClick={() => {
-                        alert("Previous button tapped!");
-                        previousPage();
-                    }}
+                    onClick={previousPage}
                     disabled={currentPage === 0}
                     aria-label="Previous page"
                 >
