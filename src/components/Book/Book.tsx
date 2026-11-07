@@ -226,7 +226,7 @@ export default function Book() {
 
     alert(`Current flipbook page: ${book.getCurrentPageIndex()}`);
 
-    book.flipPrev();
+    book.turnToPage(0);
 };
 
     const nextPage = () => {
