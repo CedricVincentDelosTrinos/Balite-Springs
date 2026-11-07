@@ -736,45 +736,294 @@
   opacity: 0.85;
 }
 
+
 /* =========================== Mobile Layout and Decorations =========================== */
 
 @media (max-width: 700px) {
-  .covertree {
-    left: 2%;
-    bottom: 3%;
-    width: 78%;
-    max-height: 75%;
-  }
 
+    /* Main layout */
+    .book-container {
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 0;
+        padding: 6px 8px;
+        justify-content: flex-start;
+        gap: 4px;
+        overflow: hidden;
+    }
 
-  .book-container {
-    padding: 8px 4px;
-  }
+    /* Remove desktop decorations */
+    .covertree {
+        display: none;
+    }
 
-  .book-stage {
-    gap: 4px;
-  }
+    .gallery-carousel {
+        display: none;
+    }
 
-  .book-arrow {
-    width: 34px;
-    height: 34px;
-  }
+    /* Give the book as much vertical room as possible */
+    .book-stage {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        gap: 3px;
+        align-items: center;
+        justify-content: center;
+    }
 
-  .book-navigation {
-    gap: 3px;
-    padding-top: 8px;
-  }
+    .balite-book {
+        max-width: 100%;
+    }
 
-  .book-nav-item {
-    padding: 8px 7px;
-    font-size: 11px;
-  }
+    .book-arrow {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+    }
 
-  .gallery-carousel {
-    display: none;
-  }
+    /* Compact navigation */
+    .book-navigation {
+        flex-shrink: 0;
+        width: 100%;
+        gap: 3px;
+        padding: 4px 0 6px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
+    .book-nav-item {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+
+    /* Book page spacing */
+    .book-page-content {
+        padding: 16px;
+    }
+
+    .cms-book-page {
+        padding: 18px 14px;
+    }
+
+    .destination-content-page {
+        padding: 20px 14px;
+    }
+
+    /* Cover */
+    .cover-title {
+        padding: 12px;
+    }
+
+    .cover-title h1 {
+        font-size: clamp(28px, 8vw, 38px);
+        line-height: 1.15;
+        margin: 12px 0;
+    }
+
+    .cover-title p {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .cover-divider {
+        font-size: 24px;
+        margin: 12px 0;
+    }
+
+    /* Welcome page */
+    .welcome-page-content {
+        gap: 10px;
+    }
+
+    .welcome-content p {
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 0 8px 16px;
+    }
+
+    .welcome-content .welcome-tagline {
+        font-size: 14px;
+        margin: 0 8px 16px;
+    }
+
+    /* Destination information */
+    .destination-info-header {
+        margin-bottom: 8px;
+    }
+
+    .destination-eyebrow {
+        font-size: 8px;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    .destination-info-header h1 {
+        font-size: 21px;
+    }
+
+    .destination-location {
+        font-size: 9px;
+        margin: 5px 0;
+    }
+
+    .destination-divider {
+        font-size: 19px;
+    }
+
+    .destination-description p {
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 0 8px 16px;
+    }
+
+    /* Dynamic CMS text pages */
+    .destination-content-heading {
+        margin-bottom: 12px;
+    }
+
+    .destination-content-heading > span {
+        font-size: 9px;
+        margin-bottom: 7px;
+    }
+
+    .destination-content-heading h1 {
+        font-size: 22px;
+    }
+
+    .destination-content-divider {
+        font-size: 20px;
+        margin-top: 8px;
+    }
+
+    .destination-content-body {
+        padding: 0 4px 10px;
+    }
+
+    .destination-content-body p,
+    .cms-book-page .destination-description p {
+        font-size: 13px;
+        line-height: 1.55;
+        margin-bottom: 12px;
+    }
+
+    /* Visit Us page */
+    .visit-page-content {
+        gap: 10px;
+    }
+
+    .visit-header h1 {
+        font-size: 27px;
+        margin-bottom: 6px;
+    }
+
+    .visit-header p {
+        font-size: 10px;
+    }
+
+    .visit-locations {
+        gap: 10px;
+        padding-bottom: 8px;
+    }
+
+    .visit-location {
+        width: 94%;
+        padding: 11px;
+        gap: 8px;
+    }
+
+    .visit-location-details {
+        gap: 8px;
+    }
+
+    .visit-location-details h2 {
+        font-size: 14px;
+    }
+
+    .visit-location-details p {
+        font-size: 10px;
+    }
+
+    .visit-map-button {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    /* Video page */
+    .video-page-content {
+        gap: 10px;
+    }
+
+    .video-page-content .destination-info-header {
+        padding-top: 4px;
+    }
+
+    .video-container iframe {
+        max-width: 100%;
+        height: 95%;
+    }
+
+    /* Photo pages */
+    .destination-photo-caption {
+        padding: 24px 10px 10px;
+    }
+
+    .destination-photo-caption h2 {
+        font-size: 22px;
+    }
+
+    .destination-photo-caption p {
+        font-size: 13px;
+    }
+
+    /* CMS images */
+    .cms-image-content figcaption {
+        font-size: 10px;
+    }
+
+    /* CMS gallery */
+    .cms-gallery-content {
+        gap: 8px;
+    }
+
+    .cms-gallery-content img {
+        height: 110px;
+    }
+
+    .cms-gallery-content figcaption {
+        font-size: 9px;
+    }
+
+    /* Utility navigation */
+    .book-utility-navigation {
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 6px;
+        padding: 4px 0;
+    }
+
+    .book-utility-button {
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+    .book-utility-navigation {
+      position: fixed;
+      top: auto;
+      bottom: 12px;
+      left: 12px;
+      transform: none;
+      z-index: 20;
+      gap: 6px;
+      padding: 0;
+    }
+
+    .book-utility-button {
+      padding: 8px 10px;
+      font-size: 10px;
+    }
 }
+
 
 /* =========================== CMS Dynamic Page Layout =========================== */
 
