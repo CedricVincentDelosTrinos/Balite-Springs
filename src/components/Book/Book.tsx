@@ -217,6 +217,10 @@ export default function Book() {
     }, [cmsContent]);
 
     const previousPage = () => {
+        console.log("PREVIOUS CLICKED");
+        console.log("Current page:", currentPage);
+        console.log("Flipbook instance:", bookRef.current?.pageFlip());
+
         bookRef.current?.pageFlip().flipPrev();
     };
 
