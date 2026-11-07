@@ -217,17 +217,16 @@ export default function Book() {
     }, [cmsContent]);
 
     const previousPage = () => {
-    const book = bookRef.current?.pageFlip();
+        const book = bookRef.current?.pageFlip();
 
-    if (!book) {
-        alert("Flipbook instance not found!");
-        return;
-    }
+        if (!book) return;
 
-    alert(`Current flipbook page: ${book.getCurrentPageIndex()}`);
+        const currentIndex = book.getCurrentPageIndex();
 
-    book.turnToPage(0);
-};
+        if (currentIndex > 0) {
+            book.turnToPage(currentIndex - 1);
+        }
+    };
 
     const nextPage = () => {
         bookRef.current?.pageFlip().flipNext();
