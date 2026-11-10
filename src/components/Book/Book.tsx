@@ -3,6 +3,7 @@ import {
     useState,
     useEffect,
     type ComponentRef,
+    type CSSProperties,
 } from "react";
 
 
@@ -97,7 +98,7 @@ export default function Book() {
         isMobile: false,
     });
 
-    const [treeStyle, setTreeStyle] = useState<React.CSSProperties>({});
+   const [treeStyle, setTreeStyle] = useState<CSSProperties>({});
 
     const [dimensionsReady, setDimensionsReady] = useState(false);
 
@@ -171,11 +172,12 @@ export default function Book() {
     }, []);
 
     // Calculate responsive book dimensions.
+    
+    // Calculate responsive book dimensions.
     useEffect(() => {
         const stage = stageRef.current;
 
         if (!stage) return;
-
 
         const observer = new ResizeObserver(([entry]) => {
             const { width, height } = entry.contentRect;
@@ -196,49 +198,54 @@ export default function Book() {
                 height: Math.floor(pageHeight),
                 isMobile,
             });
+
             setDimensionsReady(true);
-
         });
-        useEffect(() => {
-            const stage = stageRef.current;
 
-            if (!stage || !dimensionsReady || dimensions.isMobile) return;
-
-            const updateTreePosition = () => {
-                const book = stage.querySelector(".balite-book") as HTMLElement | null;
-
-                if (!book) return;
-
-                const bookRect = book.getBoundingClientRect();
-                const stageRect = stage.getBoundingClientRect();
-
-                const treeWidth = dimensions.width * 0.95;
-                const treeHeight = dimensions.height * 0.95;
-
-                setTreeStyle({
-                    width: `${treeWidth}px`,
-                    height: `${treeHeight}px`,
-                    left: `${bookRect.left - stageRect.left - treeWidth}px`,
-                    top: `${bookRect.top - stageRect.top + (dimensions.height - treeHeight) / 2}px`,
-                });
-            };
-
-            updateTreePosition();
-
-            const observer = new ResizeObserver(updateTreePosition);
-            observer.observe(stage);
-
-            window.addEventListener("resize", updateTreePosition);
-
-            return () => {
-                observer.disconnect();
-                window.removeEventListener("resize", updateTreePosition);
-            };
-        }, [dimensions, dimensionsReady, currentPage]);
         observer.observe(stage);
 
         return () => observer.disconnect();
     }, [cmsContent]);
+
+
+    // Update cover tree position based on book dimensions.
+    useEffect(() => {
+        const stage = stageRef.current;
+
+        if (!stage || !dimensionsReady || dimensions.isMobile) return;
+
+        const updateTreePosition = () => {
+            const book = stage.querySelector(".balite-book") as HTMLElement | null;
+
+            if (!book) return;
+
+            const bookRect = book.getBoundingClientRect();
+            const stageRect = stage.getBoundingClientRect();
+
+            const treeWidth = dimensions.width * 0.95;
+            const treeHeight = dimensions.height * 0.95;
+
+            setTreeStyle({
+                width: `${treeWidth}px`,
+                height: `${treeHeight}px`,
+                left: `${bookRect.left - stageRect.left}px`,
+                top: `${bookRect.top - stageRect.top + (bookRect.height - treeHeight) / 2}px`,
+            });
+        };
+
+        updateTreePosition();
+
+        const observer = new ResizeObserver(updateTreePosition);
+        observer.observe(stage);
+
+        window.addEventListener("resize", updateTreePosition);
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener("resize", updateTreePosition);
+        };
+    }, [dimensions, dimensionsReady, currentPage]);
+
 
 
 
