@@ -97,6 +97,8 @@ export default function Book() {
         isMobile: false,
     });
 
+    const [treeStyle, setTreeStyle] = useState<React.CSSProperties>({});
+
     const [dimensionsReady, setDimensionsReady] = useState(false);
 
     // Load published CMS content from Supabase.
@@ -197,7 +199,42 @@ export default function Book() {
             setDimensionsReady(true);
 
         });
+        useEffect(() => {
+            const stage = stageRef.current;
 
+            if (!stage || !dimensionsReady || dimensions.isMobile) return;
+
+            const updateTreePosition = () => {
+                const book = stage.querySelector(".balite-book") as HTMLElement | null;
+
+                if (!book) return;
+
+                const bookRect = book.getBoundingClientRect();
+                const stageRect = stage.getBoundingClientRect();
+
+                const treeWidth = dimensions.width * 0.95;
+                const treeHeight = dimensions.height * 0.95;
+
+                setTreeStyle({
+                    width: `${treeWidth}px`,
+                    height: `${treeHeight}px`,
+                    left: `${bookRect.left - stageRect.left - treeWidth}px`,
+                    top: `${bookRect.top - stageRect.top + (dimensions.height - treeHeight) / 2}px`,
+                });
+            };
+
+            updateTreePosition();
+
+            const observer = new ResizeObserver(updateTreePosition);
+            observer.observe(stage);
+
+            window.addEventListener("resize", updateTreePosition);
+
+            return () => {
+                observer.disconnect();
+                window.removeEventListener("resize", updateTreePosition);
+            };
+        }, [dimensions, dimensionsReady, currentPage]);
         observer.observe(stage);
 
         return () => observer.disconnect();
@@ -229,10 +266,10 @@ export default function Book() {
     const needsSpacer = cmsContent.pages.length % 2 !== 0;
 
     const visitPageIndex =
-    cmsContent.pages.length + 1 + (needsSpacer ? 1 : 0);
+        cmsContent.pages.length + 1 + (needsSpacer ? 1 : 0);
 
     return (
-        
+
         <main className="book-container">
             {/* Utility navigation */}
             <div className="book-utility-navigation">
@@ -256,7 +293,12 @@ export default function Book() {
                         className={`background-decoration cover-background ${currentPage === 0 ? "visible" : ""
                             }`}
                     >
-                        <img className="covertree" src={coverTree} alt="" />
+                        <img
+                            className="covertree"
+                            src={coverTree}
+                            alt=""
+                            style={treeStyle}
+                        />
                     </div>
 
                 </div>
